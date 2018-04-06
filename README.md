@@ -1,3 +1,4 @@
+<img src="/public/assets/dreamcatcher.png" width="100px">
 # Dreamcatcher
 
 ## Dreamcatcher is an app that lets the users document their dreams in the app. The posts don't necessarily have to be sleep related and could be motivational or ambitious journal posts as well.
@@ -66,7 +67,7 @@ The apps also gives the freedom to the Users to
 ### 12th April
 
 - Comment Model and association
-- Stylings 
+- Stylings
 
 ## User Stories
 - For Users who would like to keep track of their dreams
