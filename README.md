@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+<img src="/public/assets/dreamcatcher.png" width="100px">
+>>>>>>> 8df21828b51c4ff4310d90cbf9ad47863adbf5fa
 # Dreamcatcher
 
 ## Dreamcatcher is an app that lets the users document their dreams in the app. The posts don't necessarily have to be sleep related and could be motivational or ambitious journal posts as well.
