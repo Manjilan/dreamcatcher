@@ -1,0 +1,13 @@
+var mongoose = require('mongoose'),
+  Schema = mongoose.Schema;
+
+var PostSchema = new Schema({
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    // date: { type: Date, required: true },
+    user: {type: Schema.Types.ObjectId, ref:'User'},
+});
+
+
+var Post = mongoose.model('Post', PostSchema);
+module.exports = Post;
