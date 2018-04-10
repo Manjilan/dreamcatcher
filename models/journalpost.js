@@ -6,6 +6,7 @@ var PostSchema = new Schema({
     description: { type: String, required: true },
     // date: { type: Date, required: true },
     user: {type: Schema.Types.ObjectId, ref:'User'},
+    // public: {type: Boolean, required: true}
 });
 
 

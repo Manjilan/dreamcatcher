@@ -56,8 +56,10 @@ app.use(function(req, res, next) {
 
 //Homepage
 app.get('/', function (req, res) {
-    res.send('Hello World!');
+    res.render('index', {user: req.user} );
 });
+
+//-----Journal Routes---->
 
 //Journal Index
 app.get('/api/journalposts', function(req, res){
@@ -66,7 +68,7 @@ app.get('/api/journalposts', function(req, res){
       console.log(err);
     } else {
       console.log(allPosts);
-      res.json(allPosts);
+      res.render('./journalposts/index',{posts: allPosts, user: req.user});
     }
   })
 })
@@ -97,7 +99,7 @@ app.get('/api/journalposts/:id', function(req, res){
     } else {
       console.log("post found: ", foundPost);
     }
-    res.json(foundPost);
+    res.render('./journalposts/show',{post: foundPost, user: req.user});
   })
 })
 
@@ -135,14 +137,37 @@ app.delete('/api/journalposts/:id', function(req, res){
   });
 })
 
+//---User Routes------->
+
 //Users Index
 app.get('/api/users', function(req, res){
-  res.send("Users");
+  User.find({}, function(err, allUsers){
+    if (err){
+      console.log(err);
+    } else {
+      console.log("All Users: ", allUsers);
+      res.json(allUsers);
+    }
+  })
 })
+
+//User Show page
+app.get('/api/users/:username', function(req, res){
+  var userId=req.params.username;
+  User.findOne({name: userId}, function(err, foundUser){
+    if (err){
+      console.log(err);
+    } else {
+      console.log("User found: ", foundUser);
+      res.render('userprofile', {user: req.user});
+    }
+  })
+})
+
 
 // Signup
 app.get('/signup', function (req, res) {
- res.send("Signup");
+ res.render("signup", {user: req.user});
 });
 
 
@@ -154,7 +179,7 @@ app.post("/signup", function (req, res) {
         console.log("ERROR", err);
         console.log("NEW USER!!",newUser);
         passport.authenticate("local")(req, res, function() {
-          res.render("index", {user: req.user});
+          res.json(newUser);
         });
       }
   );
@@ -163,7 +188,8 @@ app.post("/signup", function (req, res) {
 // Login Routes
 
 app.post('/login',passport.authenticate('local'), function (req, res){
-res.redirect("/api/users/req.user");
+  console.log("login successful");
+  res.redirect("/api/users/"+req.user.name);
 });
 
 app.get('/login', function(req, res){
@@ -177,6 +203,33 @@ app.get('/logout', function (req, res){
   console.log("After logout", JSON.stringify(req.user));
   res.redirect('/')
 });
+
+//Edit User Profile
+// create a function to update password
+// app.put('/api/users/:id', function(req, res){
+//   var userId=req.params.id;
+//   User.findOne({_id :userId}, function(err, foundUser){
+//     if (err){
+//       console.log(err);
+//     } else {
+//       foundUser.password = req.body.password;
+//       res.json(foundUser);
+//     }
+//   })
+// })
+
+//Delete USER
+app.delete('/api/users/:id', function(req, res){
+  var userId= req.params.id;
+  User.findOneAndRemove({_id: userId}, function(err, deletedUser){
+    if (err){
+      console.log(err);
+    } else {
+      console.log('User has been deleted: ', deletedUser);
+      res.json(deletedUser);
+    }
+  })
+})
 
 
 //-------------Server------------->

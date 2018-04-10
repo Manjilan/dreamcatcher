@@ -1,0 +1,80 @@
+a{
+  text-decoration: none;
+  padding: 10px;
+  color: white;
+  text-transform: uppercase;
+  font-family: Lato;
+}
+nav{
+  background-color: #9c9fb3;
+  padding: 10px 10px;
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+}
+body{
+  margin: 0 auto;
+  font-family: Raleway;
+}
+header{
+  background: url('../assets/DreamJournal.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-attachment: fixed; */
+  height: 650px;
+}
+p{
+  width: 60%;
+  padding: 2% 10%;
+  font-size: 20px;
+}
+img{
+  height: 600px;
+  padding: 40px;
+}
+section{
+  display: flex;
+}
+h3{
+  text-align: center;
+  font-size: 60px;
+}
+#about{
+  background: url('../assets/bokeh.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#about p{
+  width: 50%;
+  padding: 2%;
+}
+input{
+  margin: 5%;
+}
+main a{
+  color: black;
+}
+main{
+  margin-top: 100px;
+}
+.logo{
+  height: 40px;
+  padding: 0;
+  margin: 0;
+}
+footer{
+  padding: 20px;
+  text-align: center;
+  background: #9c9fb3;
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.block{
+  background: #9c9fb3;
+  margin: 3%;
+}
