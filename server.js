@@ -22,6 +22,7 @@ app.use(express.static('public'));
 // set Models
 var db = require('./models'),
   User = db.User,
+  CommentPost = db.CommentPost,
   Post = db.Post;
 
 // set view engine to ejs
@@ -79,7 +80,7 @@ app.post('/api/journalposts', function(req, res){
   //sanity Check
   console.log(newPost);
   newPost.user=req.user;
-  
+
   // console.log(req.user);
   newPost.save(function(err, savedPost){
     if (err){
@@ -137,6 +138,9 @@ app.delete('/api/journalposts/:id', function(req, res){
     res.redirect("/api/journalposts");
   });
 })
+
+//---Comment Routes------->
+
 
 //---User Routes------->
 
@@ -202,6 +206,9 @@ app.post("/signup", function (req, res) {
 
 app.post('/login',passport.authenticate('local'), function (req, res){
   console.log("login successful");
+  if (err){
+    console.log(err)
+  }
   res.redirect("users/:id");
 });
 
