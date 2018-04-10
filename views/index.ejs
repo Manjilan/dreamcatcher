@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dream Catcher</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato|Raleway" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/styles/style.css">
+  <!-- <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script> -->
+  <script src="./scripts/app.js"></script>
+</head>
+<body>
+  <nav>
+    <a href="/"><img src="../assets/dreamcatcherlogo.png" class="logo"></a>
+    <a href="/">Home</a>
+    <a href="#about">About</a>
+    <a href="/api/journalposts">Gallery</a>
+    <% if (!user) { %>
+    <a href="/signup">Sign Up</a>
+    <a href="/login">Log In</a>
+    <% } else { %>
+    <a href="/api/users/<%=user.id%>"><%= user.username %></a>
+    <a href="/logout">Log Out</a>
+    <% } %>
+  </nav>
+  <header>
+  </header>
+  <main>
+    <section>
+      <div>
+        <h3>Dream Catcher</h3>
+        <p>Lorem ipsum dolor sit amet, id pro saepe ceteros, honestatis necessitatibus et usu. Id putant honestatis mei, pri eu facilis eligendi posidonium. Docendi voluptatum ne mel, pro te decore definiebas complectitur. Saperet tincidunt ne sed. Nam qualisque ullamcorper cu. Posse facer sed an. Eam facete utroque adversarium te. No autem semper mei, eros graecis deserunt qui cu. Sit at quas civibus perpetua, vis ut vitae exerci. Stet habeo percipit ex has, ea equidem adversarium usu. Assum alterum appellantur ne nec, amet placerat usu ea. Vis te fugit nihil similique, ne tota copiosae sea. In ius bonorum commune, sea cu nostro feugait postulant. Eam justo suavitate ne, quo etiam essent cetero et. Duo ut deserunt maiestatis, in per postea fabulas similique. Ut mei copiosae tractatos inciderint, eu nisl erroribus explicari his. Cu modo perfecto eum, fabulas omittantur at sed, aperiri tibique percipit id sed.
+        </p>
+    </div>
+    <img src="../assets/cosmic.jpg">
+  </section>
+  <section id="about">
+    <img src="">
+    <p>Lorem ipsum dolor sit amet, id pro saepe ceteros, honestatis necessitatibus et usu. Id putant honestatis mei, pri eu facilis eligendi posidonium. Docendi voluptatum ne mel, pro te decore definiebas complectitur. Saperet tincidunt ne sed. Nam qualisque ullamcorper cu. Posse facer sed an. Eam facete utroque adversarium te. No autem semper mei, eros graecis deserunt qui cu. Sit at quas civibus perpetua, vis ut vitae exerci. Stet habeo percipit ex has, ea equidem adversarium usu. Assum alterum appellantur ne nec, amet placerat usu ea.
+    </p>
+  </section>
+  </main>
+  <footer>
+    © Dream Catcher
+  </footer>
+</body>
+</html>
