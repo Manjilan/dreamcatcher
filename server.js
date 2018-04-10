@@ -78,7 +78,8 @@ app.post('/api/journalposts', function(req, res){
   var newPost = new Post(req.body);
   //sanity Check
   console.log(newPost);
-  // newPost.user=req.user;
+  newPost.user=req.user;
+  
   // console.log(req.user);
   newPost.save(function(err, savedPost){
     if (err){
@@ -86,7 +87,7 @@ app.post('/api/journalposts', function(req, res){
     } else {
       console.log(savedPost);
     }
-    res.json(savedPost);
+    res.redirect('/api/journalposts');
   })
 })
 
@@ -140,7 +141,7 @@ app.delete('/api/journalposts/:id', function(req, res){
 //---User Routes------->
 
 //Users Index
-app.get('/api/users', function(req, res){
+app.get('/users', function(req, res){
   User.find({}, function(err, allUsers){
     if (err){
       console.log(err);
@@ -152,18 +153,30 @@ app.get('/api/users', function(req, res){
 })
 
 //User Show page
-app.get('/api/users/:username', function(req, res){
-  var userId=req.params.username;
-  User.findOne({name: userId}, function(err, foundUser){
+// app.get('/users/public/:username', function(req, res){
+//   var userId=req.params.username;
+//   User.findOne({username: userId}, function(err, foundUser){
+//     if (err){
+//       console.log(err);
+//     } else {
+//       console.log("User found: ", foundUser);
+//       res.render('userprofile', {user: req.user});
+//     }
+//   })
+// })
+
+//User Profile page
+app.get('/users/:id', function(req, res){
+  var user=req.user;
+  console.log(user);
+  Post.find({user: user.id}, function(err, userPosts){
     if (err){
       console.log(err);
     } else {
-      console.log("User found: ", foundUser);
-      res.render('userprofile', {user: req.user});
+      res.render('userprofile', {user: req.user, posts: userPosts});
     }
   })
 })
-
 
 // Signup
 app.get('/signup', function (req, res) {
@@ -189,7 +202,7 @@ app.post("/signup", function (req, res) {
 
 app.post('/login',passport.authenticate('local'), function (req, res){
   console.log("login successful");
-  res.redirect("/api/users/"+req.user.name);
+  res.redirect("users/:id");
 });
 
 app.get('/login', function(req, res){

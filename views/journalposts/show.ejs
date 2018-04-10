@@ -12,7 +12,7 @@
 </head>
 <body>
   <nav>
-    <img src="../assets/dreamcatcherlogo.png" class="logo">
+    <img src="../../assets/dreamcatcherlogo.png" class="logo">
     <a href="/">Home</a>
     <a href="/#about">About</a>
     <a href="/api/journalposts">Gallery</a>
@@ -20,7 +20,7 @@
     <a href="/signup">Sign Up</a>
     <a href="/login">Log In</a>
     <% } else { %>
-    <a href="/api/users/<%=user.id%>"><%= user.username %></a>
+    <a href="/users/<%=user.id%>"><%= user.username %></a>
     <a href="/logout">Log Out</a>
     <% } %>
   </nav>

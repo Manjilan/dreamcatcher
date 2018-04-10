@@ -12,7 +12,7 @@
 </head>
 <body>
   <nav>
-    <img src="../assets/dreamcatcherlogo.png" class="logo">
+    <img src="../../assets/dreamcatcherlogo.png" class="logo">
     <a href="/">Home</a>
     <a href="/#about">About</a>
     <a href="/api/journalposts">Gallery</a>
@@ -20,13 +20,32 @@
     <a href="/signup">Sign Up</a>
     <a href="/login">Log In</a>
     <% } else { %>
-    <a href="/api/users/<%=user.id%>"><%= user.username %></a>
     <a href="/logout">Log Out</a>
     <% } %>
   </nav>
   <!-- <header>
   </header> -->
   <main>
+    <aside>
+      <%= user.username %>
+    </aside>
+    <section>
+      <% for (let post of posts) { %>
+        <div>
+          <h2><%= post.title %></h2>
+        </div>
+        <% } %>
+    </section>
+    <section>
+      <form method="POST" action="/api/journalposts">
+        <h4>Create a Journal Post</h4>
+        <input type="text" placeholder="Title" name="title">
+        <input type="text" placeholder="Description" name="description">
+        <input type="date" name="date">
+        <label for="public"><input type="checkbox" name="public" value="true">Public</label>
+        <input type="submit">
+      </form>
+    </section>
   </main>
   <footer>
     © Dream Catcher
