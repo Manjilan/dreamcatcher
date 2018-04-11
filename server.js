@@ -89,7 +89,7 @@ app.post('/api/journalposts', function(req, res){
     } else {
       console.log(savedPost);
     }
-    res.redirect('/api/journalposts', {user: req.user});
+    res.redirect('/api/journalposts');
   })
 })
 

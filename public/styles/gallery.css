@@ -24,6 +24,7 @@ body{
 }
 .block{
   background: #9c9fb3;
-  margin: 3%;
+  margin: 6%;
   width: 25%;
+  padding: 2%;
 }
