@@ -87,3 +87,13 @@ footer{
   width: auto;
   padding: 20px;
 }
+input{
+  padding: 10px;
+  font-family: Raleway;
+  font-size: 20px;
+}
+.commentBox{
+  background-color: #E6E2D6;
+  margin: 20px;
+  padding: 5px;
+}

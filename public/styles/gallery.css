@@ -1,0 +1,29 @@
+nav a{
+  text-decoration: none;
+  padding: 10px;
+  color: white;
+  text-transform: uppercase;
+  font-family: Lato;
+}
+.nav{
+  background-color: #9c9fb3;
+  padding: 10px 10px;
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+}
+body{
+  margin: 0 auto;
+  font-family: Raleway;
+}
+.logo{
+  height: 40px;
+  padding: 0;
+  margin: 0;
+}
+.block{
+  background: #9c9fb3;
+  margin: 3%;
+  width: 25%;
+}

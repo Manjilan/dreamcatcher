@@ -6,6 +6,7 @@ var express = require("express"),
   app = express(),
   bodyParser = require("body-parser"),
   methodOverride = require("method-override"),
+  $ = require("jquery"),
 
   //  NEW ADDITIONS
   cookieParser = require("cookie-parser"),
@@ -88,7 +89,7 @@ app.post('/api/journalposts', function(req, res){
     } else {
       console.log(savedPost);
     }
-    res.redirect('/api/journalposts');
+    res.redirect('/api/journalposts', {user: req.user});
   })
 })
 
@@ -99,9 +100,15 @@ app.get('/api/journalposts/:id', function(req, res){
     if (err){
       console.log(err);
     } else {
+      var comments=foundPost.id;
       console.log("post found: ", foundPost);
+      console.log(comments);
+      CommentPost.find({post: comments}, function(err, postComment){
+        console.log(postComment);
+        res.render('./journalposts/show',{post: foundPost, user: req.user, comments: postComment});
+      });
     }
-    res.render('./journalposts/show',{post: foundPost, user: req.user});
+
   })
 })
 
@@ -135,12 +142,55 @@ app.delete('/api/journalposts/:id', function(req, res){
   var postId=req.params.id;
   Post.findOneAndRemove({ _id: postId }, function () {
     console.log("Deleted:", postId);
-    res.redirect("/api/journalposts");
+    res.redirect("/api/journalposts", {user: req.user});
   });
 })
 
 //---Comment Routes------->
 
+//Comment Index
+app.get('/api/comments', function(req, res){
+  CommentPost.find({}, function(err, allComments){
+    if (err){
+      console.log(err);
+    } else {
+      console.log(allComments);
+      res.json(allComments);
+    }
+  })
+})
+
+// Create a comment
+app.post('/api/comments', function(req, res){
+  console.log(req.body)
+  var newComment = new CommentPost(req.body);
+  console.log(newComment);
+  // console.log(req.params.id);
+  // newComment.post=req.params.id;
+  newComment.user= req.user;
+  console.log(req.body.post_id);
+  newComment.post=req.body.post_id;
+  newComment.save(function(err, savedComment){
+    if (err){
+      console.log(err);
+    } else {
+      console.log("Comment Saved: ", savedComment);
+      res.json(savedComment);
+    }
+  })
+})
+//delete Comment
+app.delete('/api/comments/:id', function(res, req){
+  var commentId=req.params.id;
+  CommentPost.findOneAndRemove({_id: commentId}, function(err, deletedComment){
+    if (err){
+      console.log(err);
+    } else {
+      console.log("Deleted Comment: ", deletedComment);
+      res.json(deletedComment);
+    }
+  })
+})
 
 //---User Routes------->
 
@@ -206,9 +256,6 @@ app.post("/signup", function (req, res) {
 
 app.post('/login',passport.authenticate('local'), function (req, res){
   console.log("login successful");
-  if (err){
-    console.log(err)
-  }
   res.redirect("users/:id");
 });
 

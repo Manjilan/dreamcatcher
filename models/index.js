@@ -5,4 +5,4 @@ mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/dreamcatcher")
 
 module.exports.User = require("./user");
 module.exports.Post = require("./journalpost");
-module.exports.Comment = require("./comment");
+module.exports.CommentPost = require("./comment");

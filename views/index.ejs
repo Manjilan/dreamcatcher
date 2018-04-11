@@ -13,16 +13,18 @@
 <body>
   <nav class="nav">
     <a href="/"><img src="../assets/dreamcatcherlogo.png" class="logo"></a>
-    <a href="/">Home</a>
-    <a href="#about">About</a>
-    <a href="/api/journalposts">Gallery</a>
-    <% if (!user) { %>
-    <a href="/signup">Sign Up</a>
-    <a href="/login">Log In</a>
-    <% } else { %>
-    <a href="/users/<%=user.id%>"><%= user.username %></a>
-    <a href="/logout">Log Out</a>
-    <% } %>
+
+        <a href="/">Home</a>
+        <a href="#about">About</a>
+        <a href="/api/journalposts">Gallery</a>
+        <% if (!user) { %>
+          <a href="/signup">Sign Up</a>
+          <a href="/login">Log In</a>
+        <% } else { %>
+          <a href="/users/<%=user.id%>"><%= user.username %></a>
+          <a href="/logout">Log Out</a>
+        <% } %>
+  
   </nav>
   <header>
   </header>
