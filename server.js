@@ -246,7 +246,7 @@ app.post("/signup", function (req, res) {
         console.log("ERROR", err);
         console.log("NEW USER!!",newUser);
         passport.authenticate("local")(req, res, function() {
-          res.json(newUser);
+          res.redirect('/users/:id');
         });
       }
   );

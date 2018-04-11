@@ -9,6 +9,7 @@
   <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   <script src="../../scripts/app.js"></script>
 </head>
 <body>
@@ -31,12 +32,13 @@
       <%= user.username %>
     </aside>
     <section>
-      <i class="fas fa-plus fa-2x"></i>
+      <button class="createPost"><i class="fas fa-plus fa-2x"></i></button>
       <% for (let post of posts) { %>
         <div class="block">
           <h4><%= post.title %></h4>
           <p><%= post.description %></p>
-          <i class="fas fa-pencil-alt fa-2x" class="editButton"></i>
+          <button><i class="fas fa-pencil-alt fa-2x" class="editButton"></i></button>
+          <button><i class="fas fa-trash-alt fa-2x"></i></button>
       </div>
         <!-- <div>
           <h2><%= post.title %></h2>
@@ -44,15 +46,17 @@
         </div> -->
         <% } %>
     </section>
-    <section class="card-panel">
-      <form method="POST" action="/api/journalposts">
-        <h4>Create a Journal Post</h4>
-        <input type="text" placeholder="Title" name="title">
-        <input type="text" placeholder="Description" name="description">
-        <input type="date" name="date">
-        <label for="public"><input type="checkbox" name="public" value="true">Public</label>
-        <input type="submit">
-      </form>
+    <section class="modal">
+      <div class="modal-content">
+        <form method="POST" action="/api/journalposts">
+          <h4>Create a Journal Post</h4>
+          <input type="text" placeholder="Title" name="title">
+          <textarea type="text" placeholder="Description" name="description"></textarea>
+          <input type="date" name="date">
+          <label for="public"><input type="checkbox" name="public" value="true">Public</label>
+          <input type="submit">
+        </form>
+    </div>
     </section>
   </main>
   <footer>
