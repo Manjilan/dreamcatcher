@@ -35,25 +35,31 @@
       <button class="createPost"><i class="fas fa-plus fa-2x"></i></button>
       <% for (let post of posts) { %>
         <div class="block">
-          <h4><%= post.title %></h4>
-          <p><%= post.description %></p>
-          <button><i class="fas fa-pencil-alt fa-2x" class="editButton"></i></button>
-          <button><i class="fas fa-trash-alt fa-2x"></i></button>
+          <a href="/api/journalposts/<%=post.id%>"><h4><%= post.title %></h4></a>
+          <button class="editButton"><i class="fas fa-pencil-alt fa-2x" ></i></button>
+          <form method="POST" action="/api/journalposts/<%=post.id%>?_method=DELETE"><button type="submit"><i class="fas fa-trash-alt fa-2x"></i></button></form>
       </div>
-        <!-- <div>
-          <h2><%= post.title %></h2>
-
-        </div> -->
+      <section class="modal1">
+        <div class="modal-content1">
+          <form method="POST" action="/api/journalposts/<%=post.id%>?_method=PUT">
+            <h4>Edit Post</h4>
+            <input type="text" placeholder="Title" name="title" value="<%=post.title%>">
+            <textarea type="text" placeholder="Description" name="description"><%=post.description%></textarea>
+            <p>Dated: <%=post.date%></p>
+            <input type="submit">
+          </form>
+      </div>
+      </section>
         <% } %>
     </section>
     <section class="modal">
       <div class="modal-content">
         <form method="POST" action="/api/journalposts">
           <h4>Create a Journal Post</h4>
-          <input type="text" placeholder="Title" name="title">
-          <textarea type="text" placeholder="Description" name="description"></textarea>
-          <input type="date" name="date">
-          <label for="public"><input type="checkbox" name="public" value="true">Public</label>
+          <input type="text" placeholder="Title" name="title" id="title">
+          <textarea type="text" placeholder="Description" name="description" id="description"></textarea>
+          <input type="date" name="date" id="date">
+          <label for="public"><input type="checkbox" name="public" value="true" id="public">Public</label>
           <input type="submit">
         </form>
     </div>

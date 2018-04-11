@@ -130,7 +130,7 @@ app.put('/api/journalposts/:id', function(req, res){
          res.status(500).json({ error: err.message, });
        } else {
          console.log("Post updated: ", savedPost);
-         res.json(savedPost);
+         res.redirect('/users/:id');
        }
       })
     }
@@ -142,7 +142,7 @@ app.delete('/api/journalposts/:id', function(req, res){
   var postId=req.params.id;
   Post.findOneAndRemove({ _id: postId }, function () {
     console.log("Deleted:", postId);
-    res.redirect("/api/journalposts", {user: req.user});
+    res.redirect("/api/journalposts");
   });
 })
 

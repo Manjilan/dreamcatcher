@@ -98,7 +98,7 @@ input{
   margin: 20px;
   padding: 5px;
 }
-.modal {
+.modal, .modal1 {
   padding: 100px;
   background-color: rgba(255, 255, 255, .5);
   display: none;
@@ -111,7 +111,7 @@ input{
   bottom: 0;
 }
 
-.modal-content {
+.modal-content, .modal-content1 {
   padding: 40px 20px;
   color: #444;
   width: 60%;
