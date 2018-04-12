@@ -103,21 +103,14 @@ app.get('/api/journalposts/:id', function(req, res){
       var comments=foundPost.id;
       console.log("post found: ", foundPost);
       console.log(comments);
-      CommentPost.find({post: comments}, function(err, postComment){
+      CommentPost.find({post: comments}).populate('user').exec(function(err, postComment){
         console.log("comments:",postComment);
         res.render('./journalposts/show',{post: foundPost, user: req.user, comments: postComment});
       });
     }
-
   })
 })
-//Show page for a journal post
-// app.get('/api/journalposts/:id', function(req, res){
-//   var postId=req.params.id;
-//   Post.findOne({_id: postId}, function(err, foundPost){
-//     CommentPost.find({post: foundPost.id})
-//   })
-// })
+
 
 //Update a post
 app.put('/api/journalposts/:id', function(req, res){

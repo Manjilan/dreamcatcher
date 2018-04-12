@@ -37,6 +37,7 @@ main{
   margin: 5%;
   padding: 2%;
   background: linear-gradient(#71CFCE, #CAC4C7);
+  min-height: 480px;
 }
 .commentBox{
   background: #E6E5E9;
