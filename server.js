@@ -243,7 +243,7 @@ app.get('/signup', function (req, res) {
 
 app.post("/signup", function (req, res) {
   console.log("sanity check!! pre-signup");
-  User.register(new User({ username: req.body.username, }), req.body.password,
+  User.register(new User({ username: req.body.username, fullName: req.body.fullName }), req.body.password,
       function (err, newUser) {
         console.log("Check if it enter function to auth");
         console.log("ERROR", err);
