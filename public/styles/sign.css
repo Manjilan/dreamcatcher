@@ -78,3 +78,6 @@ input, textarea {
   width: 50%;
   text-transform: uppercase;
 }
+a:hover{
+  color: #8B7583;
+}

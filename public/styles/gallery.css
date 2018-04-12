@@ -26,11 +26,12 @@ a{
 }
 .block{
   background: #E0E0E2;
-  margin: 2%;
-  width: 20%;
+  margin: 1%;
+  width: 80%;
   padding: 2%;
   height: 150px;
   border: 3px ridge white;
+  overflow: hidden;
 }
 .block a{
     color: #8B7583;
@@ -52,6 +53,6 @@ footer{
   bottom: 0;
   left: 0;
 }
-.block p{
-  overflow:
+a:hover{
+  color: #8B7583;
 }

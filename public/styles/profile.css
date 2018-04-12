@@ -112,4 +112,14 @@ input, textarea {
   padding: 2% 1%;
   width: 50%;
   text-transform: uppercase;
+
+}
+h4, {
+  text-align: center;
+}
+a{
+  color: black;
+}
+a:hover{
+  color: #8B7583;
 }
