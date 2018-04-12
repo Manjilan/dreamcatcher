@@ -45,10 +45,13 @@ h3{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  padding: 8%;
 }
 #about p{
-  width: 50%;
-  padding: 2%;
+  width: 80%;
+}
+#about img{
+  margin-top: 8%;
 }
 input{
   margin: 5%;
@@ -57,7 +60,7 @@ main a{
   color: black;
 }
 main{
-  margin-top: 100px;
+  margin-top: 50px;
 }
 .logo{
   height: 40px;
@@ -98,22 +101,10 @@ input{
   margin: 20px;
   padding: 5px;
 }
-.modal, .modal1 {
-  padding: 100px;
-  background-color: rgba(255, 255, 255, .5);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+.col{
+  margin-right: 3%;
 }
-
-.modal-content, .modal-content1 {
-  padding: 40px 20px;
-  color: #444;
-  width: 60%;
-  background-color: white;
+h4{
+  font-size: 30px;
+  text-align: center;
 }

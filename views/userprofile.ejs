@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dream Catcher</title>
   <link href="https://fonts.googleapis.com/css?family=Lato|Raleway" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="../../styles/style.css">
+  <link rel="stylesheet" type="text/css" href="../../styles/profile.css">
   <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script> -->
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   <script src="../../scripts/app.js"></script>
 </head>
@@ -29,15 +27,24 @@
   </header> -->
   <main>
     <aside>
-      <%= user.username %>
+      <img src="/assets/user.png">
+      <h3>Name: <%= user.fullName %></h3>
+      <h3>Username: <%= user.username %></h3>
+      <h3>Total Posts: <%= posts.length %> Posts </h3>
     </aside>
+    <div class="mainArea">
     <section>
-      <button class="createPost"><i class="fas fa-plus fa-2x"></i></button>
+      <div class="profile-header">
+        <h2>Recent Posts </h2>
+        <button class="createPost"><i class="fas fa-plus fa-2x"></i></button>
+      </div>
       <% for (let post of posts) { %>
         <div class="block">
           <a href="/api/journalposts/<%=post.id%>"><h4><%= post.title %></h4></a>
-          <button class="editButton"><i class="fas fa-pencil-alt fa-2x" ></i></button>
-          <form method="POST" action="/api/journalposts/<%=post.id%>?_method=DELETE"><button type="submit"><i class="fas fa-trash-alt fa-2x"></i></button></form>
+          <div>
+            <button class="editButton"><i class="fas fa-pencil-alt fa-2x" ></i></button>
+            <form method="POST" action="/api/journalposts/<%=post.id%>?_method=DELETE"><button type="submit"><i class="fas fa-trash-alt fa-2x"></i></button></form>
+          </div>
       </div>
       <section class="modal1">
         <div class="modal-content1">
@@ -64,6 +71,7 @@
         </form>
     </div>
     </section>
+  </div>
   </main>
   <footer>
     © Dream Catcher

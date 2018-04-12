@@ -89,7 +89,7 @@ app.post('/api/journalposts', function(req, res){
     } else {
       console.log(savedPost);
     }
-    res.redirect('/api/journalposts');
+    res.render('./journalposts/show', {user: req.user, post: savedPost, comments: ""});
   })
 })
 
@@ -104,7 +104,7 @@ app.get('/api/journalposts/:id', function(req, res){
       console.log("post found: ", foundPost);
       console.log(comments);
       CommentPost.find({post: comments}, function(err, postComment){
-        console.log(postComment);
+        console.log("comments:",postComment);
         res.render('./journalposts/show',{post: foundPost, user: req.user, comments: postComment});
       });
     }
@@ -120,18 +120,20 @@ app.put('/api/journalposts/:id', function(req, res){
       console.log(err);
     } else {
       console.log("post found: ", foundPost);
-//Updating post
+      //Updating post
       foundPost.title = req.body.title;
       foundPost.description = req.body.description;
       //foundPost.date = req.body.date;
-//Saving the changes
+      //Saving the changes
       foundPost.save(function(err, savedPost){
         if (err) {
-         res.status(500).json({ error: err.message, });
-       } else {
-         console.log("Post updated: ", savedPost);
-         res.redirect('/users/:id');
-       }
+          res.status(500).json({ error: err.message, });
+        } else {
+          console.log("Post updated: ", savedPost);
+          CommentPost.find({post: savedPost.id}, function(err, postComment){
+            res.render('./journalposts/show', {post: savedPost, user: req.user, comments: postComment});
+          });
+        }
       })
     }
   })
@@ -162,7 +164,7 @@ app.get('/api/comments', function(req, res){
 
 // Create a comment
 app.post('/api/comments', function(req, res){
-  console.log(req.body)
+  console.log(req.body);
   var newComment = new CommentPost(req.body);
   console.log(newComment);
   // console.log(req.params.id);
@@ -175,13 +177,14 @@ app.post('/api/comments', function(req, res){
       console.log(err);
     } else {
       console.log("Comment Saved: ", savedComment);
-      res.json(savedComment);
+      res.redirect("/api/journalposts");
     }
   })
 })
 //delete Comment
 app.delete('/api/comments/:id', function(res, req){
   var commentId=req.params.id;
+  console.log(commentId);
   CommentPost.findOneAndRemove({_id: commentId}, function(err, deletedComment){
     if (err){
       console.log(err);
