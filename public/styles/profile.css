@@ -37,7 +37,7 @@ footer{
   bottom: 0;
   left: 0;
 }
-.modal, .modal1 {
+.modal, .modal1, .modal2 {
   padding: 100px;
   background-color: rgba(211, 211, 211, .3);
   display: none;
@@ -50,18 +50,18 @@ footer{
   bottom: 0;
 }
 
-.modal-content, .modal-content1 {
+.modal-content, .modal-content1, .modal-content2 {
   padding: 40px 20px;
   color: #444;
   width: 60%;
   background-color: white;
 }
 aside{
-  background: #d9d9d9;
+  background: linear-gradient(#9A89AD, #71CFCE);
   padding: 30px 10px;
   width: 25%;
   height: 500px;
-  border: 10px outset white;
+  border: 1px solid #9A89AD;
   margin-left: 2%;
 }
 aside img{
@@ -69,16 +69,17 @@ aside img{
   border-radius: 100%;
   display: block;
   margin: 20% auto;
+  background: white;
 }
 h3{
   font-size: 24px;
   text-align: center;
 }
 .mainArea{
-  border: 10px outset white;
+  border: 1px solid white;
   margin: 0 2%;
   width: 90%;
-  background: #d9d9d9;
+  background: linear-gradient(#71CFCE, #9A89AD);
 }
 .block{
   margin: 2%;
@@ -110,9 +111,11 @@ input, textarea {
   margin: 2% auto;
   border-radius: 5px;
   padding: 2% 1%;
-  width: 50%;
+  width: 98%;
   text-transform: uppercase;
-
+}
+textarea{
+  height: 150px;
 }
 h4, {
   text-align: center;
@@ -122,4 +125,18 @@ a{
 }
 a:hover{
   color: #8B7583;
+}
+.check input{
+  width: 5%;
+}
+h4{
+  font-size: 22px;
+}
+h6{
+  text-align: right;
+  font-size: 18px;
+  margin: 0;
+}
+#deactivate{
+  text-align: center;
 }

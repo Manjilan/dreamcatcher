@@ -111,6 +111,13 @@ app.get('/api/journalposts/:id', function(req, res){
 
   })
 })
+//Show page for a journal post
+// app.get('/api/journalposts/:id', function(req, res){
+//   var postId=req.params.id;
+//   Post.findOne({_id: postId}, function(err, foundPost){
+//     CommentPost.find({post: foundPost.id})
+//   })
+// })
 
 //Update a post
 app.put('/api/journalposts/:id', function(req, res){
@@ -181,8 +188,9 @@ app.post('/api/comments', function(req, res){
     }
   })
 })
+
 //delete Comment
-app.delete('/api/comments/:id', function(res, req){
+app.delete('/api/comments/:id', function(req, res){
   var commentId=req.params.id;
   console.log(commentId);
   CommentPost.findOneAndRemove({_id: commentId}, function(err, deletedComment){
@@ -190,7 +198,7 @@ app.delete('/api/comments/:id', function(res, req){
       console.log(err);
     } else {
       console.log("Deleted Comment: ", deletedComment);
-      res.json(deletedComment);
+      res.render('index', {user: req.user});
     }
   })
 })
@@ -289,14 +297,14 @@ app.get('/logout', function (req, res){
 // })
 
 //Delete USER
-app.delete('/api/users/:id', function(req, res){
+app.delete('/users/:id', function(req, res){
   var userId= req.params.id;
   User.findOneAndRemove({_id: userId}, function(err, deletedUser){
     if (err){
       console.log(err);
     } else {
       console.log('User has been deleted: ', deletedUser);
-      res.json(deletedUser);
+      res.render('index', {user: req.user});
     }
   })
 })

@@ -31,6 +31,16 @@
       <h3>Name: <%= user.fullName %></h3>
       <h3>Username: <%= user.username %></h3>
       <h3>Total Posts: <%= posts.length %> Posts </h3>
+      <input placeholder="Deactivate Account" id="deactivate">
+      <section class="modal2">
+        <div class="modal-content2">
+            <h3>Are you sure you want to delete your account?</h3>
+              <form method="POST" action="/users/<%=user.id%>?_method=DELETE">
+                <input type="submit" value="Yes">
+              </form>
+              <input type="submit" value="No" class="close">
+        </div>
+      </section>
     </aside>
     <div class="mainArea">
     <section>
@@ -48,6 +58,7 @@
       </div>
       <section class="modal1">
         <div class="modal-content1">
+          <h6 class="close">X</h6>
           <form method="POST" action="/api/journalposts/<%=post.id%>?_method=PUT">
             <h4>Edit Post</h4>
             <input type="text" placeholder="Title" name="title" value="<%=post.title%>">
@@ -61,12 +72,13 @@
     </section>
     <section class="modal">
       <div class="modal-content">
+        <h6 class="close">X</h6>
         <form method="POST" action="/api/journalposts">
           <h4>Create a Journal Post</h4>
           <input type="text" placeholder="Title" name="title" id="title">
           <textarea type="text" placeholder="Description" name="description" id="description"></textarea>
           <input type="date" name="date" id="date">
-          <label for="public"><input type="checkbox" name="public" value="true" id="public">Public</label>
+          <div class="check"><label for="public"><input type="checkbox" name="public" value="true" id="public">Public</label></div>
           <input type="submit">
         </form>
     </div>

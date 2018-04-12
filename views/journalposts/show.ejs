@@ -30,13 +30,18 @@
     <h2>Date: <%= post.date %></h2>
     <h2>Title: <%= post.title %></h2>
     <p><%= post.description %></p>
-    <% for (let comment of comments){ %>
+
+    <% for (var comment of comments){ %>
       <div class="commentBox">
         <h4><%= comment.user %> said: </h4>
         <h5><%= comment.comment %></h5>
+        <% if (user) {%>
           <% if (comment.user == user.id) {%>
-          <form method="POST" action="/api/comments/<%= comment.id %>?_method=DELETE"><button type="submit"><i class="fas fa-trash-alt"></i></button></form>
+          <form method="POST" action="/api/comments/<%= comment._id %>?_method=DELETE">
+            <button type="submit"> <i class="fas fa-trash-alt"></i> </button>
+          </form>
           <% } %>
+        <% } %>
       </div>
     <% } %>
     <% if (user) { %>

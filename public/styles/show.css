@@ -36,7 +36,7 @@ footer{
 main{
   margin: 5%;
   padding: 2%;
-  background-color: #CAC4C7;
+  background: linear-gradient(#71CFCE, #CAC4C7);
 }
 .commentBox{
   background: #E6E5E9;
