@@ -1,8 +1,14 @@
 nav a{
-  padding: 10px;
+  text-decoration: none;
+  padding: 0 20px;
   color: white;
   text-transform: uppercase;
   font-family: Lato;
+}
+nav{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 .nav{
   background-color: #9c9fb3;
@@ -23,7 +29,7 @@ a{
 .logo{
   height: 40px;
   padding: 0;
-  margin: 0;
+  margin: 0 800px 0 0;
 }
 .block{
   background: linear-gradient(#E0E0E2, white);
