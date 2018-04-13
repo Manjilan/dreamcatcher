@@ -7,6 +7,7 @@ var express = require("express"),
   bodyParser = require("body-parser"),
   methodOverride = require("method-override"),
   $ = require("jquery"),
+  flash = require('flash-express'),
 
   //  NEW ADDITIONS
   cookieParser = require("cookie-parser"),
@@ -39,6 +40,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
@@ -58,7 +60,7 @@ app.use(function(req, res, next) {
 
 //Homepage
 app.get('/', function (req, res) {
-    res.render('index', {user: req.user} );
+  res.render('index', {user: req.user} );
 });
 
 //-----Journal Routes---->

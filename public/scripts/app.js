@@ -7,6 +7,7 @@ $(document).ready(function(){
   });
   $('.close').on('click', function(){
       $('.modal').css('display', 'none');
+      $('.modal1').css('display', 'none');
       $('.modal2').css('display', 'none');
   });
   $('#deactivate').on('click', function(){
