@@ -3,7 +3,7 @@
 
 ## Dreamcatcher is an app that lets the users document their dreams in the app. The posts don't necessarily have to be sleep related and could be motivational or ambitious journal posts as well.
 
-## Heroku Link[https://boiling-plateau-19780.herokuapp.com/]
+## Heroku Link [https://boiling-plateau-19780.herokuapp.com/]
 
 ## Journal Posts
 
