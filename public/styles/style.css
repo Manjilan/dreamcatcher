@@ -116,3 +116,20 @@ h4{
 a:hover{
   color: #8B7583;
 }
+@media screen and (max-width: 760px){
+  #about{
+    display: flex;
+    flex-direction: column;
+  }
+  #about img{
+    height: auto;
+    width: 80%;
+    margin: 0 auto;
+  }
+  .cosmic{
+    display: none;
+  }
+  main h3{
+    font-size: 48px; 
+  }
+}
